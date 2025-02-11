@@ -20,6 +20,7 @@ Press CTRL+C to quit
 
 
 
+<img width="1446" alt="Screenshot 2025-02-11 at 4 37 57 PM" src="https://github.com/user-attachments/assets/96f5aa96-9af2-47b7-8466-9033e9f1ef92" />
 
 
 
