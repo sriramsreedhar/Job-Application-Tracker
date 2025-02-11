@@ -5,6 +5,7 @@ Job Application Tracker with Passstore
 
 # Git clone the App 
 
+#pip -r install  requirements.txt
 
 # Start the app
 #(.venvWeb) sriramsreedhar@dev job-tracker % python app.py
