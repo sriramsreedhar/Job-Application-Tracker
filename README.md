@@ -1,11 +1,12 @@
 # Job-Application-Tracker
 Job Application Tracker with Passstore
 
-#Steps
+# ** Steps **
 
-#Clone the App
+# Git clone the App 
 
-#Start the app
+
+# Start the app
 #(.venvWeb) sriramsreedhar@dev job-tracker % python app.py
  * Serving Flask app 'app'
  * Debug mode: on
