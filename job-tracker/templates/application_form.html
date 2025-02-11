@@ -1,1 +1,83 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                {{ 'Edit Application' if application else 'New Application' }}
+            </div>
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="company" class="form-label">Company</label>
+                        <input type="text" class="form-control" id="company" name="company" 
+                               value="{{ application.company if application else '' }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="position" class="form-label">Position</label>
+                        <input type="text" class="form-control" id="position" name="position" 
+                               value="{{ application.position if application else '' }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="application_link" class="form-label">Application Link</label>
+                        <input type="url" class="form-control" id="application_link" name="application_link" 
+                               value="{{ application.application_link if application else '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control" id="password" name="password" 
+                                   value="{{ application.password if application else '' }}"
+                                   autocomplete="new-password">
+                            <button type="button" class="btn btn-outline-secondary" onclick="toggleFormPassword()">
+                                Show
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="resume" class="form-label">Resume</label>
+                        <input type="file" class="form-control" id="resume" name="resume">
+                        {% if application and application.resume_path %}
+                        <small class="text-muted">Current resume: {{ application.resume_path.split('/')[-1] }}</small>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Status</label>
+                        <select class="form-control" id="status" name="status">
+                            {% set statuses = ['Applied', 'Interview Scheduled', 'Interviewing', 'Offer Received', 'Rejected', 'Withdrawn'] %}
+                            {% for status in statuses %}
+                                <option value="{{ status }}" 
+                                        {{ 'selected' if application and application.status == status else '' }}>
+                                    {{ status }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="notes" class="form-label">Notes</label>
+                        <textarea class="form-control" id="notes" name="notes" rows="4">{{ application.notes if application else '' }}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        {{ 'Update Application' if application else 'Add Application' }}
+                    </button>
+                    <a href="{{ url_for('index') }}" class="btn btn-secondary">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
+<script>
+function toggleFormPassword() {
+    const passwordField = document.getElementById('password');
+    const button = passwordField.nextElementSibling;
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+        button.textContent = "Hide";
+    } else {
+        passwordField.type = "password";
+        button.textContent = "Show";
+    }
+}
+</script>
+{% endblock %}
