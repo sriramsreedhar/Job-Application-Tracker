@@ -114,15 +114,15 @@ def delete_application(id):
 def download_resume(filename):
     return send_from_directory('uploads/resumes', filename)
 
-def init_db():
+#def init_db():
     """Initialize the database by dropping all tables and creating them again"""
-    with app.app_context():
+    #with app.app_context():
         # Drop all tables
-        db.drop_all()
+        #db.drop_all()
         # Create all tables
-        db.create_all()
+        #db.create_all()
 
 if __name__ == '__main__':
     # Initialize database
-    init_db()
+    #init_db()
     app.run(debug=True)
